@@ -35,7 +35,7 @@ class AppException(object):
             status_code = 500
             AppExceptionCase.__init__(self, status_code, context)
 
-    class ImitationImageNotFound(AppExceptionCase):
+    class ImageNotFound(AppExceptionCase):
         def __init__(self, context: dict = None):
             """
             Something wrong with file upload !
@@ -43,7 +43,7 @@ class AppException(object):
             status_code = 400
             AppExceptionCase.__init__(self, status_code, context)
 
-    class ImitationIsMatch(AppExceptionCase):
+    class NoResultFromModel(AppExceptionCase):
         def __init__(self, context: dict = None):
             """
             Fail to get result from model

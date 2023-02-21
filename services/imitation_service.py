@@ -14,13 +14,13 @@ class ImitationService:
 
     def is_feeling_match(self, file: UploadFile) -> ServiceResult:
         if not file:
-            return ServiceResult(AppException.ImitationImageNotFound())
+            return ServiceResult(AppException.ImageNotFound())
 
         # is_match, recognize = model.get ~~
         is_match = True
         recognize = "Happy"
         if not is_match or not recognize:
-            return ServiceResult(AppException.ImitationIsMatch())
+            return ServiceResult(AppException.NoResultFromModel())
 
         return ServiceResult({"match": is_match, "recognize": recognize})
 
