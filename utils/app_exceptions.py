@@ -27,4 +27,26 @@ async def app_exception_handler(request: Request, exc: AppExceptionCase):
 
 
 class AppException(object):
-    pass
+    class ImitationGetPhoto(AppExceptionCase):
+        def __init__(self, context: dict = None):
+            """
+            Fail to get photo url
+            """
+            status_code = 500
+            AppExceptionCase.__init__(self, status_code, context)
+
+    class ImitationImageNotFound(AppExceptionCase):
+        def __init__(self, context: dict = None):
+            """
+            Something wrong with file upload !
+            """
+            status_code = 400
+            AppExceptionCase.__init__(self, status_code, context)
+
+    class ImitationIsMatch(AppExceptionCase):
+        def __init__(self, context: dict = None):
+            """
+            Fail to get result from model
+            """
+            status_code = 500
+            AppExceptionCase.__init__(self, status_code, context)
