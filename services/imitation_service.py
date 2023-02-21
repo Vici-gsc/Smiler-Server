@@ -8,7 +8,7 @@ class ImitationService:
     def get_photo_url(self, feeling: str) -> ServiceResult:
         photo_url = ImitationCRUD().get_photo_url(feeling)
         if not photo_url:
-            return ServiceResult(AppException.ImitationGetPhoto())
+            return ServiceResult(AppException.CantGetPhotoFromGCP())
 
         return ServiceResult({"feeling": feeling, "photo_url": photo_url})
 

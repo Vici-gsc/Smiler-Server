@@ -27,7 +27,7 @@ async def app_exception_handler(request: Request, exc: AppExceptionCase):
 
 
 class AppException(object):
-    class ImitationGetPhoto(AppExceptionCase):
+    class CantGetPhotoFromGCP(AppExceptionCase):
         def __init__(self, context: dict = None):
             """
             Fail to get photo url
