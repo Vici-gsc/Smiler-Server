@@ -13,6 +13,6 @@ router = APIRouter(
 
 
 @router.post("", response_model=ExpressionItem)
-async def is_feeling_match(file: UploadFile):
-    result = ExpressionService().is_feeling_match(file)
+async def is_feeling_match(feeling: str, file: UploadFile):
+    result = ExpressionService().is_feeling_match(feeling, file)
     return handle_result(result)

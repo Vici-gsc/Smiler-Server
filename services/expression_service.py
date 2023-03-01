@@ -2,17 +2,24 @@ from utils.app_exceptions import AppException
 from utils.service_result import ServiceResult
 
 from fastapi import UploadFile
+from services.ai_model import FaceEmotionRecognition
+
+from PIL import Image
+from io import BytesIO
 
 
 class ExpressionService:
-    def is_feeling_match(self, file: UploadFile) -> ServiceResult:
+    def is_feeling_match(self, feeling: str, file: UploadFile) -> ServiceResult:
         if not file:
             return ServiceResult(AppException.ImageNotFound())
 
-        # is_match, recognize = model.get ~~
-        is_match = True
-        recognize = "Happy"
-        if not is_match or not recognize:
+        # predict emotion using model
+        img = Image.open(BytesIO(file.file.read()))
+        pred = FaceEmotionRecognition()(img)
+        if not pred:
             return ServiceResult(AppException.NoResultFromModel())
 
-        return ServiceResult({"match": is_match, "recognize": recognize})
+        # get expression is same or not same
+        is_match = (pred == feeling)
+
+        return ServiceResult({"match": is_match, "recognize": pred})

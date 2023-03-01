@@ -19,6 +19,6 @@ async def get_photo(feeling: str):
 
 
 @router.post("/face", response_model=ImitationFace)
-async def is_feeling_match(file: UploadFile):
-    result = ImitationService().is_feeling_match(file)
+async def is_feeling_match(feeling: str, file: UploadFile):
+    result = ImitationService().is_feeling_match(feeling, file)
     return handle_result(result)
