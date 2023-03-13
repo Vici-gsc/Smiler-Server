@@ -1,3 +1,5 @@
+from sqlalchemy import func
+
 from utils.app_exceptions import AppException
 from utils.service_result import ServiceResult
 
@@ -7,10 +9,13 @@ from services.ai_model import FaceEmotionRecognition
 from PIL import Image
 from io import BytesIO
 
+from services.main import AppService, AppCRUD
+from config.emotion_url import UrlItem
 
-class ImitationService:
+
+class ImitationService(AppService):
     def get_photo_url(self, feeling: str) -> ServiceResult:
-        photo_url = ImitationCRUD().get_photo_url(feeling)
+        photo_url = ImitationCRUD(self.db).get_photo_url(feeling)
         if not photo_url:
             return ServiceResult(AppException.CantGetPhotoFromGCP())
 
@@ -32,7 +37,9 @@ class ImitationService:
         return ServiceResult({"match": is_match, "recognize": pred})
 
 
-class ImitationCRUD:
+class ImitationCRUD(AppCRUD):
     def get_photo_url(self, feeling: str) -> str:
-        # get photo_url from google cloud platform
-        return "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.google.co.jp%2F%3Fhl%3Dko&psig=AOvVaw0dqHXQLluo0GuLbTbcAvhp&ust=1676904308339000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCBmb_pof0CFQAAAAAdAAAAABAD"
+        query = self.db.query(UrlItem.url).filter_by(emotion=feeling).order_by(func.rand()).limit(1)
+        url = query.scalar()
+
+        return url
