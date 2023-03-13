@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="jiyun@202.30.30.3:3906 key (2)" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="jiyun@202.30.30.3:3906 key">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/jiyun/mount/Smiler-Server" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="jiyun@202.30.30.3:3906 key (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/jiyun/mount/Smiler-Server" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
