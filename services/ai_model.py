@@ -23,7 +23,7 @@ class FaceEmotionRecognition:
             cls._init = True
 
     def __call__(self, img, *args, **kwargs):
-        face = self.detector(img)
+        img = self.detector(img)
         img = self.transform(img).unsqueeze(0)
         prob = self.model(img)
         predict = torch.argmax(prob)
