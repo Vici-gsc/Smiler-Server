@@ -1,6 +1,6 @@
+import timm
 import torch
 import torchvision.transforms as transforms
-import timm
 
 
 class FaceEmotionRecognition:
@@ -17,11 +17,13 @@ class FaceEmotionRecognition:
             self.gpu = gpu
 
             self.model = self.load_model()
+            self.detector = MTCNN(image_size=224, post_process=False, device='cuda')
             self.transform = get_transform()
             self.labels = ['natural', 'angry', 'embarrass', 'fear', 'happy', 'hurt', 'sad']
             cls._init = True
 
     def __call__(self, img, *args, **kwargs):
+        face = self.detector(img)
         img = self.transform(img).unsqueeze(0)
         prob = self.model(img)
         predict = torch.argmax(prob)
