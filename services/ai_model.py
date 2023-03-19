@@ -26,7 +26,6 @@ class FaceEmotionRecognition:
 
     def __call__(self, img, *args, **kwargs):
         face = self.detector(img)
-        print(face)
         if face is not None:
             img = face.permute(1, 2, 0).detach().cpu().numpy().astype(np.uint8)
         else:
@@ -44,8 +43,7 @@ class FaceEmotionRecognition:
 
 
 def get_transform():
-    interpolation = transforms.functional.InterpolationMode('bicubic')
-
+    # interpolation = transforms.functional.InterpolationMode('bicubic')
     return transforms.Compose([
         transforms.ToPILImage(),
         transforms.Resize(384),
