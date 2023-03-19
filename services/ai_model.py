@@ -25,8 +25,12 @@ class FaceEmotionRecognition:
             cls._init = True
 
     def __call__(self, img, *args, **kwargs):
-        img = self.detector(img)
-        img = img.permute(1, 2, 0).detach().cpu().numpy().astype(np.uint8)
+        face = self.detector(img)
+        print(face)
+        if face is not None:
+            img = face.permute(1, 2, 0).detach().cpu().numpy().astype(np.uint8)
+        else:
+            img = np.array(img)
         img = self.transform(img).unsqueeze(0)
         prob = self.model(img)
         predict = torch.argmax(prob)
@@ -49,11 +53,3 @@ def get_transform():
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
     ])
-
-
-if __name__ == '__main__':
-    import torch
-
-    model = FaceEmotionRecognition()
-    img = torch.rand(3, 224, 224)
-    print(model(img))
