@@ -12,14 +12,13 @@ from config.emotion_url import UrlItem
 
 class WordService(AppService):
     def get_word_info(self) -> ServiceResult:
-        feeling_list = random.sample(feelings, 5)
-        feeling = random.sample(feeling_list, 1)[0]
+        feeling = random.sample(feelings, 1)[0]
 
         photo_url = WordCRUD(self.db).get_photo_url(feeling)
         if not photo_url:
             return ServiceResult(AppException.CantGetPhotoFromGCP())
 
-        return ServiceResult({"answer": feeling, "feeling_list": feeling_list, "photo_url": photo_url})
+        return ServiceResult({"answer": feeling, "feeling_list": feelings, "photo_url": photo_url})
 
 
 class WordCRUD(AppCRUD):

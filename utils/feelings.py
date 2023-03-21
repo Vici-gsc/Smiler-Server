@@ -3,7 +3,5 @@ feelings = [
     "happy",
     "embarrass",
     "angry",
-    "fear",
-    "hurt",
     "sad",
 ]
