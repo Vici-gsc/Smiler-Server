@@ -21,7 +21,7 @@ class FaceEmotionRecognition:
             self.model = self.load_model()
             self.detector = MTCNN(image_size=224, post_process=False, device='cuda' if self.gpu else 'cpu')
             self.transform = get_transform()
-            self.labels = ['natural', 'angry', 'embarrass', 'fear', 'happy', 'hurt', 'sad']
+            self.labels = ['natural', 'angry', 'embarrass', 'happy', 'sad']
             cls._init = True
 
     def __call__(self, img, *args, **kwargs):
@@ -36,7 +36,7 @@ class FaceEmotionRecognition:
         return self.labels[predict]
 
     def load_model(self):
-        model = timm.create_model('convnext_tiny_384_in22ft1k', num_classes=7)
+        model = timm.create_model('convnext_tiny_384_in22ft1k', num_classes=5)
         model.load_state_dict(torch.load(self.model_path)['state_dict'])
         model.to('cuda' if self.gpu else 'cpu')
         return model
