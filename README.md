@@ -15,3 +15,14 @@ git clone https://github.com/Vici-gsc/Smiler-Server.git
 ```
 python3 -m uvicorn main:app --reload
 ```
+
+## How to Test
+We wrote test code to verify that it works well against the server API. Here's how to run the test code.  
+
+1. Run FastAPI Server  
+2. Open another terminal and move to tests/ directory  
+3. Install required python package using requirements.txt
+3. Run test_main.py  
+```
+pytest test_main.py
+```
