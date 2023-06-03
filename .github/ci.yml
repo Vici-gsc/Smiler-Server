@@ -1,0 +1,25 @@
+name: ci
+on:
+  pull_request:   
+    paths:
+      - 'src/**'
+
+jobs:
+  CIPipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          cd ./tests
+          python3 -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test with pytest
+        run: |
+          cd ./tests
+          pytest test_main.py
