@@ -1,11 +1,11 @@
 from fastapi import APIRouter, UploadFile, Depends
 
-from models.imitation import ImitationPhoto, ImitationFace
+from src.config.database import get_db
+from src.models.imitation import ImitationPhoto, ImitationFace
 
-from utils.service_result import handle_result
-from services.imitation_service import ImitationService
+from src.utils.service_result import handle_result
+from src.services.imitation_service import ImitationService
 
-from config.database import get_db
 
 router = APIRouter(
     prefix="/imitation",

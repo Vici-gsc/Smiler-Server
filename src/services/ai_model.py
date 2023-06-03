@@ -11,7 +11,7 @@ class FaceEmotionRecognition:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def __init__(self, model_name='convnext_tiny_384_in22ft1k', model_path='./services/model_best.pth', gpu=True):
+    def __init__(self, model_name='convnext_tiny_384_in22ft1k', model_path='/home/jiyun/mount/Smiler-Server/services/model_best.pth', gpu=True):
         cls = type(self)
         if not hasattr(cls, "_init"):
             self.model_name = model_name

@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 
-from models.word import WordItem
+from src.config.database import get_db
+from src.models.word import WordItem
 
-from utils.service_result import handle_result
-from services.word_service import WordService
+from src.utils.service_result import handle_result
+from src.services.word_service import WordService
 
-from config.database import get_db
 
 router = APIRouter(
     prefix="/word",

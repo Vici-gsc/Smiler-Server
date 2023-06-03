@@ -1,4 +1,4 @@
-from utils.app_exceptions import AppExceptionCase
+from src.utils.app_exceptions import AppExceptionCase
 
 
 class ServiceResult:

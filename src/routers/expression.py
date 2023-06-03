@@ -1,9 +1,9 @@
 from fastapi import APIRouter, UploadFile
 
-from models.expression import ExpressionItem
+from src.models.expression import ExpressionItem
 
-from utils.service_result import handle_result
-from services.expression_service import ExpressionService
+from src.utils.service_result import handle_result
+from src.services.expression_service import ExpressionService
 
 router = APIRouter(
     prefix="/expression",

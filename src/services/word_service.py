@@ -2,12 +2,12 @@ from sqlalchemy import func
 
 import random
 
-from utils.app_exceptions import AppException
-from utils.service_result import ServiceResult
-from utils.feelings import feelings
+from src.utils.app_exceptions import AppException
+from src.utils.service_result import ServiceResult
+from src.utils.feelings import feelings
 
-from services.main import AppService, AppCRUD
-from config.emotion_url import UrlItem
+from src.services.main import AppService, AppCRUD
+from src.config.emotion_url import UrlItem
 
 
 class WordService(AppService):

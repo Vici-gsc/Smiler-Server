@@ -1,8 +1,8 @@
-from utils.app_exceptions import AppExceptionCase, app_exception_handler
+from src.utils.app_exceptions import AppExceptionCase, app_exception_handler
 from fastapi import FastAPI
 
-from routers import imitation, word, expression
-from services.ai_model import FaceEmotionRecognition
+from src.routers import imitation, word, expression
+from src.services.ai_model import FaceEmotionRecognition
 
 app = FastAPI()
 FaceEmotionRecognition()

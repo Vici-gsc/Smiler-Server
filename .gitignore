@@ -134,4 +134,4 @@ model_best.pth
 # idea
 .idea
 
-config/secret.py
+src/config/secret.py

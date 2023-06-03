@@ -1,8 +1,8 @@
-from utils.app_exceptions import AppException
-from utils.service_result import ServiceResult
+from src.utils.app_exceptions import AppException
+from src.utils.service_result import ServiceResult
 
 from fastapi import UploadFile
-from services.ai_model import FaceEmotionRecognition
+from src.services.ai_model import FaceEmotionRecognition
 
 from PIL import Image
 from io import BytesIO
