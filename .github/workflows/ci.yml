@@ -1,11 +1,5 @@
 name: ci
-on:
-  pull_request:   
-    paths:
-      - 'src/**'
-  push:
-    paths:
-      - 'src/**'
+on: [push, pull_request]
 
 jobs:
   CIPipeline:

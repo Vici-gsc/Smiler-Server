@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from src.config.secret import db_info
 
 
-connector = Connector()
+connector = Connector() 
 
 
 def get_conn():
